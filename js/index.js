@@ -2,8 +2,8 @@
 
 // VARIABLES
 // navbar
-let mainNav = document.getElementsByClassName("main-navigation"); 
-let navHeader = document.getElementById("logo-heading");
+let mainNav = document.getElementsByClassName("main-navigation");
+let navHeader = document.getElementsByClassName("logo-heading");
 let navLinks = document.querySelectorAll("nav a");
 
 // top section
@@ -12,34 +12,38 @@ let welcomeText = document.querySelector("header h2")
 
 // middle section (let's go!)
 let middleSection = document.getElementsByClassName("content-section");
-let middleImgs = document.getElementsByClassName("img-content")
+let middleImgs = document.querySelectorAll(".img-content img")
 
 // destination section
 let destinationSection = document.getElementsByClassName("content-destination");
 
 // bottom section
-let funInSun = document.querySelector(".destination h4") 
+let funInSun = document.querySelector(".destination h4")
 let signUpButtons = document.querySelectorAll(".btn")
 
 
 
 
-// Event Listeners
-// Mouseover on "FunBus" for cat bus
+// EVENT LISTENERS
 
-let bodyBackground = document.getElementsByClassName("body");
-// welcomeText.addEventListener('mouseover', function(event) {
-//     bodyBackground[0].style.backgroundColor = "black";
-// })
+// Mouseover - change background with mouseover "FunBus"
 
-// Add "!" to h2 on click
-let h2Arr = Array.from(document.getElementsByTagName("h2"));
-
-busImg.addEventListener("click", function(event) {
-    h2Arr.forEach(element => { element.textContent += "!"})
+// let body = document.getElementsByClassName("body");
+let body = document.querySelector("body");
+navHeader[0].addEventListener('mouseover', function(event) {
+    body.style.backgroundColor = "lightgrey";
 })
 
-// Nav Links change color and size
+// Click - Add "!" to h2
+let h2Arr = Array.from(document.getElementsByTagName("h2"));
+
+busImg.addEventListener("click", function (event) {
+    h2Arr.forEach(element => {
+        element.textContent += "!"
+    })
+})
+
+// Drag - Nav Links change color and size
 navLinks.forEach(anchor => {
     anchor.addEventListener("drag", event => {
         anchor.style.color = "pink";
@@ -48,18 +52,31 @@ navLinks.forEach(anchor => {
     })
 })
 
-// Paragraphs turn uppercase on wheel
+// Wheel - paragraphs turn uppercase
 let paras = document.querySelectorAll("p");
 paras.forEach(para => {
-    para.addEventListener("click", event => {
-        // para.textContent = para.textContent.toUpperCase();
-        let para1 = [];
-        for (let i=0; i <para.textContent.length ;i++){
-            let paraText = para.textContent;
-            console.log(paraText);
-            para1 = paraText[i].toUpperCase();
-        }
+    para.addEventListener("wheel", event => {
+        para.textContent = para.textContent.toUpperCase();
+        // let para1 = "";
+        // for (let i=0; i <para.textContent.length ;i++){
+        //     let paraText = para.textContent;
+        //     para1 += paraText[i].toUpperCase();
+        //     console.log(para1);
+        // }
+        // return para1;
+    })
+})
 
-        para1;
-    }
-)})
+// Resize - window alerts
+window.addEventListener("resize", function (event) {
+    this.alert("resizin");
+});
+
+// Double click - flip/hide image
+middleImgs.forEach(img => {
+    img.addEventListener("click", event => event.target.style.display = "none")
+})
+
+// Keydown
+
+
