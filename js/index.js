@@ -24,7 +24,7 @@ const footer = document.querySelector("footer")
 // 1 - Mouseover: change background with mouseover "FunBus"
 // let body = document.getElementsByClassName("body");
 const body = document.querySelector("body");
-navHeader[0].addEventListener('mouseover', function(event) {
+navHeader[0].addEventListener('mouseover', function (event) {
     body.style.backgroundColor = "lightgrey";
 })
 
@@ -39,9 +39,9 @@ busImg.addEventListener("click", function (event) {
 
 // 3 - Drag: nav links change color and size
 navLinks.forEach(anchor => {
-    anchor.addEventListener("drag", event => {
-        anchor.style.color = "pink";
-        anchor.style.fontSize = '2rem';
+    anchor.addEventListener("drag", anchor => {
+        anchor.target.style.color = "pink";
+        anchor.target.style.fontSize = '2rem';
     })
 })
 
@@ -91,6 +91,13 @@ mainNav[0].addEventListener("click", event => {
 // 10 - Mouseover: footer to change text
 footer.addEventListener("mouseover", event => {
     event.currentTarget.style.fontFamily = "Papyrus"
+})
+
+navLinks.forEach(anchor => {
+    anchor.addEventListener("click", event => {
+        event.stopPropagation();
+        event.preventDefault();
+    })
 })
 
 // figure out how to add new class styling and toggle it
